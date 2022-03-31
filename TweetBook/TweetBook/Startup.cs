@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TweetBook.Installer;
 using TweetBook.Options;
 
 namespace TweetBook
@@ -27,11 +28,8 @@ namespace TweetBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddSwaggerGen(x =>
-            {
-                x.SwaggerDoc("v1", new OpenApiInfo { Title = "Tweetbook API", Version = "v1" });
-            });
+            services.InstallServicesInAssembly(Configuration);
+       
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
